@@ -1,0 +1,158 @@
+[gd_scene load_steps=18 format=3 uid="uid://bg0pi0s1ek1c1"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_qyked"]
+[ext_resource type="Texture2D" uid="uid://cpa8dbj3c48e2" path="res://graphics/table.PNG" id="2_ab2y4"]
+[ext_resource type="Texture2D" uid="uid://38q1pmkq6jix" path="res://graphics/tableAcross.PNG" id="3_7snxv"]
+[ext_resource type="Texture2D" uid="uid://ccuwr8p87sjui" path="res://graphics/peng.PNG" id="3_a48vn"]
+[ext_resource type="Texture2D" uid="uid://bwsiwcxhrqigi" path="res://graphics/pengpressed.PNG" id="4_at4u5"]
+[ext_resource type="Texture2D" uid="uid://kjjll4s2pirc" path="res://graphics/tableLeft.PNG" id="4_opraw"]
+[ext_resource type="Texture2D" uid="uid://ca8rsedmvngyu" path="res://graphics/chi.PNG" id="5_rqnhs"]
+[ext_resource type="Texture2D" uid="uid://d4lqkugr83ta0" path="res://graphics/tableMy.PNG" id="5_ytpse"]
+[ext_resource type="Texture2D" uid="uid://cfer0a0wc2pen" path="res://graphics/chipressed.PNG" id="6_fsmgf"]
+[ext_resource type="Texture2D" uid="uid://d07bjxd0dy78f" path="res://graphics/tableRight.PNG" id="6_rrgyi"]
+[ext_resource type="Texture2D" uid="uid://d05njkrnubq0g" path="res://graphics/gang.PNG" id="7_vla1t"]
+[ext_resource type="Texture2D" uid="uid://ba7in7irgp848" path="res://graphics/gangpressed.PNG" id="8_oy2pw"]
+[ext_resource type="Texture2D" uid="uid://dxjeeduywn4q7" path="res://graphics/hu.PNG" id="9_wwpix"]
+[ext_resource type="Texture2D" uid="uid://cf2m5lkuiin0n" path="res://graphics/hupressed.PNG" id="10_ui6fh"]
+[ext_resource type="Texture2D" uid="uid://d1hvrrfr5hqig" path="res://graphics/x.PNG" id="15_0lm53"]
+[ext_resource type="Texture2D" uid="uid://cqhk6ianecfpg" path="res://graphics/xpressed.PNG" id="16_r2sb7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wcgkk"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("2_ab2y4")
+}, {
+"duration": 3.0,
+"texture": ExtResource("5_ytpse")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("2_ab2y4")
+}, {
+"duration": 3.0,
+"texture": ExtResource("6_rrgyi")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("2_ab2y4")
+}, {
+"duration": 3.0,
+"texture": ExtResource("3_7snxv")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("2_ab2y4")
+}, {
+"duration": 3.0,
+"texture": ExtResource("4_opraw")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ab2y4")
+}],
+"loop": true,
+"name": &"hold",
+"speed": 5.0
+}]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_qyked")
+
+[node name="Table" type="TextureRect" parent="."]
+visible = false
+offset_right = 1972.0
+offset_bottom = 1856.0
+texture = ExtResource("2_ab2y4")
+stretch_mode = 2
+
+[node name="TableAni" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wcgkk")
+animation = &"2"
+frame_progress = 0.989976
+offset = Vector2(1000, 559)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 926.0
+offset_top = 574.0
+offset_right = 1086.0
+offset_bottom = 643.0
+text = "Shuffle"
+
+[node name="peng" type="TextureButton" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("3_a48vn")
+texture_hover = ExtResource("4_at4u5")
+
+[node name="chi" type="TextureButton" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("5_rqnhs")
+texture_hover = ExtResource("6_fsmgf")
+
+[node name="gang" type="TextureButton" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("7_vla1t")
+texture_hover = ExtResource("8_oy2pw")
+
+[node name="hu" type="TextureButton" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("9_wwpix")
+texture_hover = ExtResource("10_ui6fh")
+
+[node name="cancel" type="TextureButton" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+rotation = -0.786424
+texture_normal = ExtResource("15_0lm53")
+texture_hover = ExtResource("16_r2sb7")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 8.0
+offset_top = 1.0
+offset_right = 327.0
+offset_bottom = 49.0
+theme_override_font_sizes/font_size = 24
+text = "	Points"
+
+[node name="TextEdit2" type="TextEdit" parent="."]
+offset_left = 8.0
+offset_top = 51.0
+offset_right = 327.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 19
+text = "	North:
+	East:
+	Yours (South):
+	West:"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="peng" to="." method="_on_peng_pressed"]
+[connection signal="pressed" from="chi" to="." method="_on_chi_pressed"]
+[connection signal="pressed" from="gang" to="." method="_on_gang_pressed"]
+[connection signal="pressed" from="hu" to="." method="_on_hu_pressed"]
+[connection signal="pressed" from="cancel" to="." method="_on_cancel_pressed"]

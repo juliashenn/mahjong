@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc8wlaq5cm177"]
+
+[ext_resource type="Script" path="res://Tile.gd" id="1_awfkb"]
+[ext_resource type="Texture2D" uid="uid://cuejvsoceehgt" path="res://tilebase/frontTile.PNG" id="2_sch7s"]
+[ext_resource type="Texture2D" uid="uid://jet774sgdnab" path="res://tiles/bing1.PNG" id="2_ttiw1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qdx4t"]
+size = Vector2(600.5, 920)
+
+[node name="Tile" type="Area2D"]
+script = ExtResource("1_awfkb")
+
+[node name="base" type="TextureRect" parent="."]
+offset_left = -9.0
+offset_top = -4.0
+offset_right = 95.0
+offset_bottom = 111.0
+texture = ExtResource("2_sch7s")
+metadata/_edit_use_anchors_ = true
+
+[node name="face" type="TextureRect" parent="."]
+offset_left = -9.0
+offset_top = 28.0
+offset_right = 751.0
+offset_bottom = 1028.0
+texture = ExtResource("2_ttiw1")
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(369.75, 496)
+shape = SubResource("RectangleShape2D_qdx4t")
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 68.0
+offset_top = 39.0
+offset_right = 682.0
+offset_bottom = 956.0
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
